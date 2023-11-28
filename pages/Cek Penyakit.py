@@ -318,7 +318,7 @@ if st.session_state.login:
             self.selected_data = []
 
         def selectData(self):
-            st.write('Silahkan Pilih Gejala yang Anda Rasakan Untuk Mendeteksi Jeniss Penyakit')
+            st.write('Silahkan Pilih Gejala yang Anda Rasakan Untuk Mendeteksi Jenis Penyakit')
 
             if not self.is_clicked:
                 self.selected_data = []
