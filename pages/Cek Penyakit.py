@@ -318,7 +318,8 @@ if st.session_state.login:
             self.selected_data = []
 
         def selectData(self):
-            st.markdown("<h1 style='text-align: center; margin-top='10px'>Silahkan Pilih Gejala yang Anda Rasakan Untuk Mendeteksi Jenis Penyakit</h1>", unsafe_allow_html=True)
+            st.write('Silahkan Pilih Gejala yang Anda Rasakan Untuk Mendeteksi Jenis Penyakit')
+
             if not self.is_clicked:
                 self.selected_data = []
                 
