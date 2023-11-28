@@ -61,7 +61,7 @@ else:
 
         # Memeriksa apakah username dan password cocok
         if any((user_data['username'] == st.session_state.username_login) & (user_data['password'] == hash_password(st.session_state.password_login))):
-            st.info("**Login berhasil.**")
+            st.warning("**Login berhasil.**")
             st.session_state.login = True
             st.session_state.pagelogin = True
             
