@@ -40,7 +40,7 @@ else:
 
         # Memeriksa apakah username sudah ada
         if username in user_data['username'].values:
-            st.success("**Username sudah digunakan. Silakan pilih username lain.**")
+            st.warning("**Username sudah digunakan. Silakan pilih username lain.**")
             return
 
         # Menambahkan pengguna baru
@@ -51,7 +51,7 @@ else:
         # Menyimpan data ke file CSV
         write_csv(user_data)
         st.session_state.login = True
-        st.success("**Register berhasil.**")
+        st.warning("**Register berhasil.**")
 
     # Fungsi untuk login pengguna
     def login(username, password):
@@ -61,12 +61,12 @@ else:
 
         # Memeriksa apakah username dan password cocok
         if any((user_data['username'] == st.session_state.username_login) & (user_data['password'] == hash_password(st.session_state.password_login))):
-            st.success("**Login berhasil.**")
+            st.warning("**Login berhasil.**")
             st.session_state.login = True
             st.session_state.pagelogin = True
             
         else:
-            st.success("**Login gagal. Periksa kembali username dan password.**")
+            st.warning("**Login gagal. Periksa kembali username dan password.**")
 
     # Tampilan Streamlit
     st.title("Login dan Register")
