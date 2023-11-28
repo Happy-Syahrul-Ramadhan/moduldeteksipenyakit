@@ -9,6 +9,9 @@ if 'pagelogin' not in st.session_state:
 
 if st.session_state.pagelogin:
     st.title("Anda sudah login silahkan cek gejala yg anda rasakan")
+    if st.button("Logout"):
+        st.session_state.pagelogin = False
+        st.session_state.login = False
 
 else:
     # Fungsi untuk membaca data pengguna dari file CSV
