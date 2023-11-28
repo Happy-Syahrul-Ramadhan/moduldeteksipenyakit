@@ -350,10 +350,10 @@ if st.session_state.login:
             if col1.button("Select"):
                 self.is_clicked = True
             
-            if st.button("Reset"):
+            if col3.button("Reset"):
                 st.session_state.data.clear()
 
-            if col3.button("Tampilkan Penyakit"):
+            if col2.button("Tampilkan Penyakit"):
                 selected = tuple(st.session_state.data)
 
                 if selected in self.output_data:
