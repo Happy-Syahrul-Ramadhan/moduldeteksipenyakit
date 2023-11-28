@@ -350,7 +350,7 @@ if st.session_state.login:
             if col1.button("Select"):
                 self.is_clicked = True
             
-            if col2.button("Reset"):
+            if col3.button("Reset"):
                 st.session_state.data.clear()
 
             if st.button("Submit"):
@@ -359,8 +359,8 @@ if st.session_state.login:
                 if selected in self.output_data:
                     for output in self.output_data[selected]:
                         count += 1
-                        st.warning(f"{count}. *{output['message']}*")
-                        st.warning(f"{output['details']}")
+                        st.info(f"{count}. *{output['message']}*")
+                        st.info(f"{output['details']}")
                 else:
                     st.warning("Tidak ada informasi terkait data yang dipilih.")
 
