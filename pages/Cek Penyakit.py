@@ -353,14 +353,14 @@ if st.session_state.login:
             if col3.button("Reset"):
                 st.session_state.data.clear()
 
-            if st.button("Submit"):
+            if st.button("Tampilkan Penyaki"):
                 selected = tuple(st.session_state.data)
 
                 if selected in self.output_data:
                     for output in self.output_data[selected]:
                         count += 1
-                        st.info(f"{count}. *{output['message']}*")
-                        st.info(f"{output['details']}")
+                        st.error(f"{count}. *{output['message']}*")
+                        st.warning(f"{output['details']}")
                 else:
                     st.warning("Tidak ada informasi terkait data yang dipilih.")
 
