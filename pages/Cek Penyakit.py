@@ -373,3 +373,5 @@ if st.session_state.login:
     health_checker_app.run()
 else:
     st.title("Anda Harus Login Terlebih Dahulu !!!")
+    local_image_path = 'login.png'
+    st.image(local_image_path, width=420)
