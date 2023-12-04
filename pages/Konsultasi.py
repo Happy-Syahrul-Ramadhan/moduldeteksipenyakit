@@ -15,7 +15,7 @@ if st.session_state.login:
 
     # Form untuk memasukkan dan pesan
     message = st.text_area("Masukkan pesan:")
-    phone_number = "085658763990"
+    phone_number = "+6285658763990"
 
     # Tombol untuk mengarahkan ke API WhatsApp
     if st.button("Kirim Pesan via WhatsApp"):
