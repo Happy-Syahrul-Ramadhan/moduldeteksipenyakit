@@ -18,3 +18,5 @@ if (st.session_state.username_login == 'syahrul' and st.session_state.password_l
 
 if st.session_state.login and st.session_state.username_login != 'syahrul' or st.session_state.password_login != '123':
     st.title("ANDA LOGIN BUKAN SEBAGAI ADMIN !")
+    local_image_path = 'bukanAdmin.png'
+    st.image(local_image_path, width=420)
