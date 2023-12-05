@@ -19,7 +19,7 @@ else:
         try:
             user_data = pd.read_csv('user_data.csv')
         except FileNotFoundError:
-            user_data = pd.DataFrame(columns=['username', 'nomor_hp', 'umur', 'password'])
+            user_data = pd.DataFrame(columns=['username', 'nomor_hp', 'umur', 'jenis_kelamin', 'password'])
         return user_data
 
     # Fungsi untuk menulis data pengguna ke file CSV
@@ -35,7 +35,7 @@ else:
         return hash_password(input_password) == hashed_password
 
     # Fungsi untuk registrasi pengguna
-    def register(username, nomor_hp, umur, password):
+    def register(username, nomor_hp, umur, jenis_kelamin, password):
         user_data = read_csv()
 
         # Memeriksa apakah username sudah ada (case-insensitive)
@@ -55,7 +55,7 @@ else:
 
         # Menambahkan pengguna baru
         hashed_password = hash_password(password)
-        new_user = pd.DataFrame({'username': [username], 'nomor_hp': [nomor_hp], 'umur': [umur], 'password': [hashed_password]})
+        new_user = pd.DataFrame({'username': [username], 'nomor_hp': [nomor_hp], 'umur': [umur], 'jenis_kelamin':  [jenis_kelamin], 'password': [hashed_password]})
         user_data = pd.concat([user_data, new_user], ignore_index=True)
 
         # Menyimpan data ke file CSV
@@ -87,17 +87,18 @@ else:
     # Form untuk register
     if option == "Register":
         st.subheader("Register")
-        username_reg = st.text_input("Username:")
-        nomor_hp_reg = st.text_input("Nomor HP:")
-        umur_reg = st.text_input("Umur:")
-        password_reg = st.text_area("Password:")
+        username_reg = st.text_input("Username :")
+        nomor_hp_reg = st.text_input("Nomor HP :")
+        umur_reg = st.text_input("Umur :")
+        jenis_kelamin_reg = st.text_input("Jenis Kelamin :")
+        password_reg = st.text_input("Password :", type="password")
 
         # Validasi Nomor HP dan Umur saat registrasi
         if st.button("Register"):
-            if not username_reg or not password_reg or not nomor_hp_reg or not umur_reg:
+            if not username_reg or not password_reg or not nomor_hp_reg or not umur_reg or not jenis_kelamin_reg:
                 st.warning("**Semua kolom harus diisi.**")
             else:
-                register(username_reg, nomor_hp_reg, umur_reg, password_reg)
+                register(username_reg, nomor_hp_reg, umur_reg, jenis_kelamin_reg, password_reg)
                 # Clear sensitive information after submission
                 st.session_state.username_reg = ""
                 st.session_state.password_reg = ""
