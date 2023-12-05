@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
 
 if 'login' not in st.session_state:
     st.session_state.login = False
@@ -21,21 +22,25 @@ if (st.session_state.username_login == 'syahrul' and st.session_state.password_l
     
     st.markdown("<h1 style='text-align: center;'>Dashboard Analysis</h1>", unsafe_allow_html=True)
     
-    fig, ax = plt.subplots()
-    sns.countplot(x='jenis_kelamin', hue='jenis_kelamin', data=df, ax=ax)
-    ax.set_xlabel('Jenis Kelamin')
-    ax.set_ylabel('Jumlah')
-    ax.set_title('Persebaran Data Jenis Kelamin User')
-    st.pyplot(fig)
+    jenis_kelamin_colors = {'Laki-Laki': 'blue', 'Perempuan': 'red'}
+    fig1 = px.bar(df, x='jenis_kelamin', color='jenis_kelamin', color_discrete_map=jenis_kelamin_colors, title='Persebaran Data Jenis Kelamin User')
+    st.plotly_chart(fig1)
 
 
     st.text("\n\n\n\n")
-    fig, ax = plt.subplots()
-    sns.countplot(x='umur', hue='umur', data=df, ax=ax)
-    ax.set_xlabel('Umur')
-    ax.set_ylabel('Jumlah')
-    ax.set_title('Persebaran Data Umur User')
-    st.pyplot(fig)
+    umur_counts = df['umur'].value_counts()
+
+    fig = px.bar(x=umur_counts.index, y=umur_counts.values, 
+             color=umur_counts.index, color_discrete_sequence=px.colors.qualitative.Set3,
+             title='Jumlah User Berdasarkan Umur')
+
+    fig.update_layout(
+    xaxis_title='Umur',
+    yaxis_title='Jumlah',
+    showlegend=False  
+)
+
+    st.plotly_chart(fig)
 
 if st.session_state.login and st.session_state.username_login != 'syahrul' or st.session_state.password_login != '123':
     st.title("ANDA LOGIN BUKAN SEBAGAI ADMIN !")
